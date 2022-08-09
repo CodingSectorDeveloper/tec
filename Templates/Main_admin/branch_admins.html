@@ -1,0 +1,66 @@
+{% extends "dashboard_base.html" %}
+
+{% block head %}
+
+    <style>
+        .space-between{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .plus-icon{
+            font-size: 20px;
+            color: white;
+            background-color: rgb(79,68,224);
+            padding: 10px;
+            border-radius: 100px;
+        }
+        table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+        }
+
+        td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+        }
+
+        tr:nth-child(even) {
+        background-color: #dddddd;
+        }
+    </style>
+
+{% endblock head %}
+
+{% block body %}
+<div class="main__container">
+    <div class="space-between">
+        <h1>Branches / Branch Admins</h1>
+        <a href="/main_admin_dashboard/create_branch_admin"><i class="plus-icon fas fa-plus"></i></a>
+    </div>
+    <div class="container-div" style="margin-top: 20px;">
+        <table>
+            <tr>
+              <th>Name</th>
+              <th>Location</th>
+              <th>Username</th>
+              <th>Password</th>
+              <th>Actions</th>
+            </tr>
+            {% for i in branches %}
+            <tr>
+              <td>{{i.name}}</td>
+              <td>{{i.location}}</td>
+              <td>{{i.username}}</td>
+              <td>{{i.password}}</td>
+              <td><a href="/main_admin_dashboard/delete_branch_admin/{{i.id}}"><i class="fas fa-trash"></i></a></td>
+            </tr>
+            {% endfor %}
+          </table>
+    </div>
+</div>
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+{% endblock body %}

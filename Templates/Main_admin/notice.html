@@ -1,0 +1,104 @@
+{% extends "dashboard_base.html" %}
+{% block head %}
+
+    <style>
+        .space-between{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .container-div{
+            background-color: transparent !important;
+            width: 95%;
+            display: flex;
+            flex-wrap: wrap;
+            padding: 0px 0px !important;
+            box-shadow: none;
+        }
+        .plus-icon{
+            font-size: 20px;
+            color: white;
+            background-color: rgb(79,68,224);
+            padding: 10px;
+            border-radius: 100px;
+        }
+        .notice{
+            background-color: white;
+            border-radius: 5px;
+            padding: 30px 20px;
+            box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.200);
+            width: 25vw;
+            display: flex;
+            margin-right:20px;
+            flex-direction: column;
+            align-items: center;
+        }
+        .notice h2{
+            text-align: center;
+            padding-bottom: 10px;
+            font-family: 'Poppins', sans-serif;
+        }
+        .notice p{
+            text-align: center;
+            padding-bottom: 10px;
+        }
+        .notice a{
+            text-decoration: none;
+            display: flex;
+            margin-top: 10px;
+            color: rgb(0, 60, 255);
+            font-family: 'Poppins', sans-serif;
+        }
+        .notice a i{
+            margin-top: 3px;
+            margin-right: 10px;
+        }
+        table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        }
+
+        td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+        }
+
+        tr:nth-child(even) {
+        background-color: #dddddd;
+        }
+    </style>
+
+{% endblock head %}
+
+{% block body %}
+<div class="main__container">
+    <div class="space-between">
+        <h1>Notices</h1>
+        <a href="/main_admin_dashboard/create_notice"><i class="plus-icon fas fa-plus"></i></a>
+
+    </div>
+    <hr style="margin-top: 15px;">
+    {% if notices %}
+    <h1>Notices By You</h1>
+    {% endif %}
+    <div class="container-div" style="margin-top: 20px;">
+        {% for i in notices %}
+            <div class="notice">
+                <h2>{{i.title}}</h2>
+                {% if i.description is not None %}
+                <p>{{i.description}}</p>
+                {% endif %}
+                {% if i.image.name %}
+                <a download="{{i.image.url}}" href="#"><i class="fas fa-download"></i><p>Download Image File</p></a>
+                {% endif %}
+                {% if i.video.name %}
+                <a download="{{i.video.url}}" href="#"><i class="fas fa-download"></i><p>Download Video File</p></a>
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+{% endblock body %}

@@ -1,0 +1,67 @@
+{% extends "dashboard_base.html" %}
+
+{% block head %}
+
+    <style>
+        .space-between{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .plus-icon{
+            font-size: 20px;
+            color: white;
+            background-color: rgb(79,68,224);
+            padding: 10px;
+            border-radius: 100px;
+        }
+        table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+        }
+
+        td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+        }
+
+        tr:nth-child(even) {
+        background-color: #dddddd;
+        }
+    </style>
+
+{% endblock head %}
+
+{% block body %}
+<div class="main__container">
+    <div class="space-between">
+        <h1>Materials Required</h1>
+    </div>
+    <div class="container-div" style="margin-top: 20px;">
+        <table>
+            <tr>
+              <th>Branch</th>
+              <th>Bag</th>
+              <th>Pen</th>
+              <th>Uniform</th>
+              <th>ID Card</th>
+              <th>Date Issued</th>
+            </tr>
+            {% for i in requirements %}
+            <tr>
+              <td>{{i.branch.name}} - {{i.branch.location}}</td>
+              <td>{{i.bag}}</td>
+              <td>{{i.pen}}</td>
+              <td>{{i.uniform}}</td>
+              <td>{{i.id_card}}</td>
+              <td>{{i.date_issued}}</td>
+            </tr>
+            {% endfor %}
+          </table>
+    </div>
+</div>
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+{% endblock body %}

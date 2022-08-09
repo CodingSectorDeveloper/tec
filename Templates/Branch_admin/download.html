@@ -1,0 +1,61 @@
+{% extends "branch_base.html" %}
+{% block head %}
+
+    <style>
+        .space-between{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .container-div{
+            width: 95%;
+            overflow-x: scroll;
+        }
+        .plus-icon{
+            font-size: 20px;
+            color: white;
+            background-color: rgb(79,68,224);
+            padding: 10px;
+            border-radius: 100px;
+        }
+        table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        }
+
+        td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+        }
+
+        tr:nth-child(even) {
+        background-color: #dddddd;
+        }
+    </style>
+
+{% endblock head %}
+
+{% block body %}
+<div class="main__container">
+    <div class="space-between">
+        <h1>Download Softwares</h1>
+    </div>
+    <div class="container-div" style="margin-top: 20px;">
+        <table>
+            <tr>
+              <th>File</th>
+              <th>Download</th>
+            </tr>
+            {% for i in softwares %}
+            <tr>
+              <td>{{i.file.url}}</td>
+              <td><a href="#" download="{{i.file.url}}"><i class="fas fa-download"></i></a></td>
+            </tr>
+            {% endfor %}
+          </table>
+    </div>
+</div>
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+{% endblock body %}

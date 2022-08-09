@@ -1,0 +1,464 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Education Site - Learn With Freedom</title>
+    {% block head %}
+    {% endblock head %}
+    <style>
+            @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mate+SC&display=swap');
+
+:root{
+    --main-black: rgb(32,32,32);
+    --main-yellow: rgb(255, 157, 0);
+    --main-color: #197dff;
+}
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+html{
+    scroll-behavior: smooth;
+}
+.navbar{
+    display: flex;
+    background-color: white;
+    /* background-color: rgb(44, 44, 44); */
+    width: 100%;
+    padding: 15px 30px;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1.5px solid rgba(32, 32, 32, 0.198);
+}
+.navbar ul{
+    display: flex;
+    justify-content: center;
+    list-style: none;
+}
+.navbar ul li a{
+    color: black;
+    text-decoration: none;
+    font-weight: bolder;
+    padding: 8px 7px;
+    border: transparent 2px solid;
+    transition: 0.4s;
+    margin: 0px 5px;
+    font-family: 'Montserrat', sans-serif;
+    text-transform: uppercase;
+    font-weight: 400;
+    font-size: 16px;
+}
+.navbar ul li a:hover{
+    color: blue;
+}
+.navbar .logo .logo-text{
+    font-family: 'Poppins', sans-serif;
+    font-size: 30px;
+    letter-spacing:-0.5px;
+    font-weight: 400;
+    color: rgb(108, 108, 255) !important;
+}
+.controls{
+    font-size: 20px;
+    display: none !important;
+    color: black;
+}
+.topbar{
+    background-color: #7369fb;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 25px;
+    align-items: center;
+}
+.topbar a{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 18px;
+    text-decoration: none;
+    font-weight: 300;
+    font-family: 'Poppins', sans-serif;
+}
+.second-part{
+  display: flex;
+}
+.topbar .second-part a i{
+    margin-right: 5px;
+    font-size: 17px;
+} 
+.links{
+    display: flex;
+    margin-right: 10px;
+    align-items: center;
+}
+.topbar .links a i{
+    margin: 0px 5px;
+    font-size: 21px;
+}
+footer{
+  width: 100%;
+  font-family: 'Poppins', sans-serif;
+  background: #111;
+  padding-top: 25px;
+  position: absolute;
+  bottom: 0;
+}
+footer .content{
+  max-width: 1350px;
+  margin: auto;
+  padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+footer .content p,a{
+    font-weight: 300;
+  color: #fff;
+  text-decoration: none;
+}
+footer .content .box{
+  width: 33%;
+  transition: all 0.4s ease;
+}
+footer .content .topic{
+  font-size: 22px;
+  font-weight: 500;
+  color: #fff;
+  margin-bottom: 16px;
+
+}
+footer .content p{
+  text-align: justify;
+}
+footer .content .lower .topic{
+  margin: 24px 0 5px 0;
+}
+footer .content .lower i{
+  padding-right: 16px;
+}
+footer .content .middle{
+  padding-left: 80px;
+}
+footer .content .middle a{
+  line-height: 32px;
+}
+footer .content .right input[type="text"]{
+  height: 45px;
+  width: 100%;
+  outline: none;
+  color: #d9d9d9;
+  background: #000;
+  border-radius: 5px;
+  padding-left: 10px;
+  font-size: 17px;
+  border: 2px solid #222222;
+}
+footer .content .right input[type="submit"]{
+  height: 42px;
+  width: 100%;
+  font-size: 18px;
+  color: #d9d9d9;
+  background: #197dff;
+  outline: none;
+  border-radius: 5px;
+  letter-spacing: 1px;
+  cursor: pointer;
+  margin-top: 12px;
+  border: 2px solid #197dff;
+  transition: all 0.3s ease-in-out;
+}
+.content .right input[type="submit"]:hover{
+  background: none;
+  color:  #197dff;
+}
+footer .content .media-icons a{
+  font-size: 16px;
+  height: 45px;
+  width: 45px;
+  display: inline-block;
+  text-align: center;
+  line-height: 43px;
+  border-radius: 5px;
+  border: 2px solid #222222;
+  margin: 30px 5px 0 0;
+  transition: all 0.3s ease;
+}
+.content .media-icons a:hover{
+  border-color: #197dff;
+}
+footer .bottom{
+  width: 100%;
+  text-align: right;
+  color: #d9d9d9;
+  padding: 0 40px 5px 0;
+}
+footer .bottom a{
+  color: #197dff;
+}
+footer a{
+  transition: all 0.3s ease;
+}
+footer a:hover{
+  color: #197dff;
+}
+@media (max-width:1100px) {
+  footer .content .middle{
+    padding-left: 50px;
+  }
+}
+@media (max-width:950px){
+  footer .content .box{
+    width: 50%;
+  }
+  .content .right{
+    margin-top: 40px;
+  }
+}
+@media (max-width:560px){
+  footer{
+    position: relative;
+  }
+  footer .content .box{
+    width: 100%;
+    margin-top: 30px;
+  }
+  footer .content .middle{
+    padding-left: 0;
+  }
+}
+.search-bar{
+    display: flex;
+    align-items: center;
+    position: relative;
+    background: white;
+    justify-content: center;
+    cursor: pointer;
+    border: 1px solid rgb(149, 149, 149);
+    width: max-content;
+}
+.location{
+    color: rgb(78, 78, 78);
+    font-weight: 300;
+    position: relative;
+    font-size: 15px;
+    padding: 15px 20px;
+    font-family: 'Poppins', sans-serif;
+    border-right: 1px solid rgb(149, 149, 149);
+}
+.search-bar input{
+    width: 30vw;
+    border: none;
+    font-family: 'Poppins', sans-serif;
+}
+.search-bar input:focus{
+    outline: none;
+}
+.search-bar input::placeholder{
+    font-size: 15px;
+    font-family: 'Poppins', sans-serif;
+}
+.search-bar i{
+    color: rgb(78, 78, 78);
+    margin-right: 6px;   
+    font-size: 15px;
+}
+.search-inputs{
+    padding: 10px 15px;
+}
+.search{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+@media(max-width: 700px){
+    .navbar{
+        flex-direction: column;
+        justify-content: left !important;
+        align-items: flex-start !important;
+    }
+    .mid{
+      display: none;
+    }
+    .second-part{
+      width: 100%;
+      justify-content: space-between;
+    }
+    .logo{
+        display: flex;
+        width: 100%;
+        align-items: center !important;
+        justify-content: space-between;
+    }
+    .navbar .nav-links{
+        align-items: start;
+        padding: 0px !important;
+        flex-direction: column;
+        display: none;
+        animation: 0.6s downto linear;
+    }
+    .navbar .nav-links.active{
+        display: block;
+    }
+    .navbar .nav-links li{
+        margin: 20px 0px;
+    }
+    .nav-links li a{
+        margin: 0px 0px !important;
+        padding: 0px 0px !important;
+        border-width: 0px !important;
+        padding-top: 40px;
+    }
+    .nav-links li a:hover{
+        color: var(--main-color);
+        border-color: transparent !important;
+        background-color: transparent !important;
+    }
+    .nav-links li:nth-child(1){
+        margin-top: 30px;
+    }
+    .logo-text{
+        font-size: 20px;
+    }
+    .open{
+        display: block !important;
+    }
+    .open.hide{
+        display: none !important;
+    }
+    .close.hide{
+        display: none !important;
+    }
+    .close.show{
+        display: block !important;
+    }
+    .hidden-part{
+        padding: 10px 5px;
+        display: block;
+    }
+    .shown-part{
+        display: none;
+    }
+}
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+
+    <div class="topbar">
+      <div class="mid">
+          <div class="search">
+            <div class="search-bar">
+                <div class="search-inputs">
+                    <form action="/search" method="GET">
+                        <input type="text" name="query" class="search-main-pc" placeholder="What do you want to search ?">
+                        <button type="submit" style="background-color: transparent; border: none;"><i class="fas fa-search"></i></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+      </div>
+      <div class="second-part">
+        <div class="links">
+          <a href="#"><i class="fab fa-facebook-square"></i></a>
+          <a href="#"><i class="fab fa-whatsapp"></i></a>
+          <a href="#"><i class="fab fa-telegram"></i></a>  
+        </div>
+        {% if not request.user.is_authenticated %}
+          <a href="/login"><img width="17" height="17" style="margin-right: 5px;" src="http://www.nicdarkthemes.com/themes/education/wp/demo/university/wp-content/plugins/nd-shortcodes/addons/customizer/shortcodes/top-header/img/login-white.svg" alt="" srcset=""> Login</a>
+        {% endif %}
+        </div>
+    </div>
+
+    <div class="navbar">
+        <div class="logo">
+            <h1 class="logo-text" onclick="window.location.href='/'">
+                Education
+            </h1>
+            <i class="fas fa-bars open controls"></i>
+            <i class="fas fa-times close controls"></i>
+        </div>
+        <ul class="nav-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/#about">About</a></li>
+            <li><a href="/courses">Courses</a></li>
+            <li><a href="/#contact">Contact</a></li>
+            {% if request.user.is_authenticated %}
+            <li><a href="/redirect_to_dashboard">Dashboard</a></li>
+            <li><a href="/logout">Logout</a></li>
+            {% else %}
+                <li><a href="/login">Login</a></li>
+            {% endif %}
+        </ul>
+    </div>
+
+    {% block body %}
+
+    {% endblock body %}
+    <script>
+        var open = document.querySelector(".open");
+        var links = document.querySelector(".nav-links");
+        var close = document.querySelector('.close');
+        close.classList.add("hide");
+        open.onclick = () => {
+            open.classList.add("hide");
+            close.classList.add("show");
+            links.classList.add("active");
+        }
+        close.onclick = () => {
+            open.classList.remove("hide");
+            close.classList.remove("show");
+            links.classList.remove("active");
+        }
+    </script>
+
+<footer>
+    <div class="content">
+      <div class="left box">
+        <div class="upper">
+          <div class="topic">About us</div>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+              Itaque tempore, ab quos aperiam alias vitae natus similique vero omnis, </p>
+        </div>
+        <div class="lower">
+          <div class="topic">Contact us</div>
+          <div class="phone">
+            <a href=""><i class="fas fa-phone-volume"></i>+91 0123456789</a>
+          </div>
+          <div class="email">
+            <a href=""><i class="fas fa-envelope"></i>someone@gmail.com</a>
+          </div>
+        </div>
+      </div>
+      <div class="middle box">
+        <div class="topic">Links</div>
+        <div><a href="#">About</a></div>
+        <div><a href="#">Contact</a></div>
+        <div><a href="#">Courses</a></div>
+        <div><a href="#">Job Notifications</a></div>
+        <div><a href="#">Online Mock Tests</a></div>
+      </div>
+      <div class="middle box">
+          <div class="topic">Services</div>
+        <div><a href="#">Lorem </a></div>
+        <div><a href="#">Ipsum</a></div>
+        <div><a href="#">Dolor</a></div>
+        </div>
+    </div>
+    <hr style="margin: 10px 15px;">
+    <div class="bottom" style="text-align: center; font-weight: 300; padding-bottom: 15px">
+      <p>Copyright © 2020 Education All rights reserved</p>
+    </div>
+  </footer>
+</body>
+</html>

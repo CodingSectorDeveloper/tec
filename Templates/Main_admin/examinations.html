@@ -1,0 +1,65 @@
+{% extends "dashboard_base.html" %}
+
+{% block head %}
+
+    <style>
+        .space-between{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .plus-icon{
+            font-size: 20px;
+            color: white;
+            background-color: rgb(79,68,224);
+            padding: 10px;
+            border-radius: 100px;
+        }
+        table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+        }
+
+        td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+        }
+
+        tr:nth-child(even) {
+        background-color: #dddddd;
+        }
+    </style>
+
+{% endblock head %}
+
+{% block body %}
+<div class="main__container">
+    <div class="space-between">
+        <h1>Examinations</h1>
+    </div>
+    <div class="container-div" style="margin-top: 20px;">
+        <table>
+            <tr>
+              <th>Title</th>
+              <th>Course</th>
+              <th>Scheduled Date</th>
+              <th>F.M</th>
+              <th>No. Of Questions</th>
+            </tr>
+            {% for i in entries %}
+            <tr>
+              <td>{{i.title}}</td>
+              <td>{{i.course}}</td>
+              <td>{{i.scheduled_date}}</td>
+              <td>{{i.full_marks}}</td>
+              <td>{{i.id_card}}</td>
+            </tr>
+            {% endfor %}
+          </table>
+    </div>
+</div>
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+{% endblock body %}
